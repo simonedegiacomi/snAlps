@@ -1,4 +1,4 @@
-import { Poi } from "../Models/Poi";
+import {Poi} from "../Models/Poi";
 import AlpineBitsEventsService from "./AlpineBitsEventsService";
 
 class AggregatedPoiService {

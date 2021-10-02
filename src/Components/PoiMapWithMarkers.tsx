@@ -1,4 +1,4 @@
-import {MapContainer, TileLayer, Marker, Popup, Polyline} from 'react-leaflet'
+import {MapContainer, Marker, TileLayer} from 'react-leaflet'
 import 'leaflet/dist/leaflet.css'
 import useAggregatedPoiService from "../Hooks/useAggregatedPoiService";
 import {useEffect} from "react";
@@ -10,6 +10,7 @@ export default function PoiMapWithMarkers() {
 
   useEffect(() => {
     (async () => {await load()})()
+    // eslint-disable-next-line
   }, [])
 
   return (

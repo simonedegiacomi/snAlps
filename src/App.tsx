@@ -2,21 +2,24 @@ import {BottomNavigation, BottomNavigationAction, Box, createTheme, Fab, ThemePr
 import React from 'react';
 import './App.css';
 import PoiMapWithMarkers from './Components/PoiMapWithMarkers';
-import RestoreIcon from '@mui/icons-material/Restore';
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import LocationOnIcon from '@mui/icons-material/LocationOn';
 import AddIcon from '@mui/icons-material/Add';
-import AlpineBitsEventsService from "./Services/AlpineBitsEventsService";
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import mapIcon from './Icons/map.svg'
+import conquersIcon from './Icons/conquers.svg'
+import rankIcon from './Icons/rank.svg'
+
 
 const theme = createTheme({
   palette: {
     primary: {
-      main: '#ffff00'
+      main: '#50732f'
     }
   }
 });
 
 function App() {
+
+
 
   return (
     <ThemeProvider theme={theme}>
@@ -27,29 +30,38 @@ function App() {
         flexDirection: 'column'
       }}>
         <PoiMapWithMarkers/>
-
-        <BottomNavigation
-          showLabels
-          value={"Recents"}
-          // onChange={(event, newValue) => {
-          //   setValue(newValue);
-          // }}
-        >
-          <BottomNavigationAction label="Recents" icon={<RestoreIcon/>}/>
-          <BottomNavigationAction label="Favorites" icon={<FavoriteIcon/>}/>
-
-          <Fab color="primary"
-               sx={{
-                 zIndex: 2000,
-                 marginTop: '-1.5em'
-               }}>
-            <AddIcon/>
-          </Fab>
-
-          <BottomNavigationAction label="Nearby" icon={<LocationOnIcon/>}/>
-          <BottomNavigationAction label="Nearby" icon={<LocationOnIcon/>}/>
-        </BottomNavigation>
       </Box>
+
+      <BottomNavigation
+        showLabels
+        value={"Recents"}
+        sx={{
+          position: 'fixed',
+          bottom: 0,
+          left: 0,
+          right: 0,
+          zIndex: 2000
+        }}
+        // onChange={(event, newValue) => {
+        //   setValue(newValue);
+        // }}
+      >
+        <BottomNavigationAction label="Maps" icon={<img alt="Map icon" src={mapIcon}/>}/>
+        <BottomNavigationAction label="Conquers" icon={<img alt="Conquers icon" src={conquersIcon}/>}/>
+
+        <Fab color="primary"
+             sx={{
+               marginTop: '-1.5em',
+               minWidth: '4em',
+               minHeight: '4em',
+             }}>
+          <AddIcon/>
+        </Fab>
+
+        <BottomNavigationAction label="Rank" icon={<img alt="Rank icon" src={rankIcon}/>}/>
+        <BottomNavigationAction label="Profile" icon={<AccountCircleIcon/>}/>
+      </BottomNavigation>
+
     </ThemeProvider>
   );
 }
