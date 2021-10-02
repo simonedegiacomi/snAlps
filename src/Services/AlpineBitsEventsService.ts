@@ -1,9 +1,20 @@
 import {Poi} from "../Models/Poi";
 import {LocalizedString} from "../Models/LocalizedString";
 
+const pagesToFetch = 5
+
 class AlpineBitsEventsService {
+
   async getAllEvents(): Promise<Poi[]> {
-    const res              = await fetch("https://destinationdata.alpinebits.opendatahub.bz.it/2021-04/events")
+    const promises = []
+    for (let i = 1; i <= pagesToFetch; i++) {
+      promises.push(this.getAllEventsFromPage(i))
+    }
+    return (await Promise.all(promises)).flatMap(x => x)
+  }
+
+  private async getAllEventsFromPage(page: number = 1): Promise<Poi[]> {
+    const res              = await fetch(`https://destinationdata.alpinebits.opendatahub.bz.it/2021-04/events?page[number]=${page}`)
     const json             = await res.json()
     const alpineBitsEvents = json.data
     const pois: Poi[]      = await Promise.all(alpineBitsEvents.map(AlpineBitsEventsService.alpineBitEventToPoi))

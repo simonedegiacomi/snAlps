@@ -1,5 +1,5 @@
 import {BottomNavigation, BottomNavigationAction, Box, createTheme, Fab, ThemeProvider} from '@mui/material';
-import React from 'react';
+import React, {useState} from 'react';
 import './App.css';
 import PoiMapWithMarkers from './Components/PoiMapWithMarkers';
 import AddIcon from '@mui/icons-material/Add';
@@ -7,6 +7,9 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import mapIcon from './Icons/map.svg'
 import conquersIcon from './Icons/conquers.svg'
 import rankIcon from './Icons/rank.svg'
+import Conquers from "./Components/Conquers";
+import Rank from "./Components/Rank";
+import Profile from "./Components/Profile";
 
 
 const theme = createTheme({
@@ -19,6 +22,8 @@ const theme = createTheme({
 
 function App() {
 
+  //const [currentTab, setCurrentTab] = useState('maps')
+  const [currentTab, setCurrentTab] = useState('conquers')
 
 
   return (
@@ -29,12 +34,23 @@ function App() {
         height: '100vh',
         flexDirection: 'column'
       }}>
-        <PoiMapWithMarkers/>
+        {
+          currentTab === 'maps' && <PoiMapWithMarkers/>
+        }
+        {
+          currentTab === 'conquers' && <Conquers/>
+        }
+        {
+          currentTab === 'rank' && <Rank/>
+        }
+        {
+          currentTab === 'profile' && <Profile/>
+        }
       </Box>
 
       <BottomNavigation
         showLabels
-        value={"Recents"}
+        value={currentTab}
         sx={{
           position: 'fixed',
           bottom: 0,
@@ -42,12 +58,13 @@ function App() {
           right: 0,
           zIndex: 2000
         }}
-        // onChange={(event, newValue) => {
-        //   setValue(newValue);
-        // }}
+
+        onChange={(event, newValue) => {
+          setCurrentTab(newValue)
+        }}
       >
-        <BottomNavigationAction label="Maps" icon={<img alt="Map icon" src={mapIcon}/>}/>
-        <BottomNavigationAction label="Conquers" icon={<img alt="Conquers icon" src={conquersIcon}/>}/>
+        <BottomNavigationAction value="maps" label="Maps" icon={<img alt="Map icon" src={mapIcon}/>}/>
+        <BottomNavigationAction value="conquers" label="Conquers" icon={<img alt="Conquers icon" src={conquersIcon}/>}/>
 
         <Fab color="primary"
              sx={{
@@ -58,8 +75,8 @@ function App() {
           <AddIcon/>
         </Fab>
 
-        <BottomNavigationAction label="Rank" icon={<img alt="Rank icon" src={rankIcon}/>}/>
-        <BottomNavigationAction label="Profile" icon={<AccountCircleIcon/>}/>
+        <BottomNavigationAction value="rank" label="Rank" icon={<img alt="Rank icon" src={rankIcon}/>}/>
+        <BottomNavigationAction value="profile" label="Profile" icon={<AccountCircleIcon/>}/>
       </BottomNavigation>
 
     </ThemeProvider>
