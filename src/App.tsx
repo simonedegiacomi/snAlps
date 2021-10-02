@@ -22,8 +22,7 @@ const theme = createTheme({
 
 function App() {
 
-  //const [currentTab, setCurrentTab] = useState('maps')
-  const [currentTab, setCurrentTab] = useState('conquers')
+  const [currentTab, setCurrentTab] = useState('maps')
 
 
   return (
