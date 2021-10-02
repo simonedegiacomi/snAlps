@@ -1,46 +1,19 @@
-# Getting Started with Create React App
+# SnAlps
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+The Open Data HUB provides an ever increasing amount of data that can be used to build apps and websites to improve life and tourism in Bozen. Unfortunately, the HUB currently lacks photos and videos resources, which are of paramount importance when building modern front-facing applications.
 
-## Available Scripts
+This is why we created SnAps, an innovative mobile web app that, by using gamification, incentives all residents and visitors of Bozen to acquire and share images and video with a CC-0 license. SnAps always shows a map of points of interests and updated events, retrieved from the Open Data HUB, to suggest users where they can take pictures.
 
-In the project directory, you can run:
+Multiple interactions such as comments and “likes” allow to create a community of users, where everyone can share it’s sharing progress and show the emblems collected. This process guarantees high quality images, since users will be able to challenge themselves though dynamic ranking.
 
-### `npm start`
+The implementation of this application requires a stand-alone server that will handle user registration, comments and the community aspects of the gamification, as well as a temporary media storage server that will archive and share the CC-0-licensed files. This last temporary server will be needed until it will be possible to store the media files directly in the Open Data HUB.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## How to run this prototype?
 
-### `npm test`
+```bash
+npm install
+npm run
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+Alternatively, you can check it out [here](https://simonedegiacomi.github.io/snAlps). 
