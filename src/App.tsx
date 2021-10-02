@@ -1,25 +1,56 @@
+import {BottomNavigation, BottomNavigationAction, Box, createTheme, Fab, ThemeProvider} from '@mui/material';
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import PoiMapWithMarkers from './Components/PoiMapWithMarkers';
+import RestoreIcon from '@mui/icons-material/Restore';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import LocationOnIcon from '@mui/icons-material/LocationOn';
+import AddIcon from '@mui/icons-material/Add';
+import AlpineBitsEventsService from "./Services/AlpineBitsEventsService";
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: '#ffff00'
+    }
+  }
+});
 
 function App() {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    <ThemeProvider theme={theme}>
+      <Box sx={{
+        display: 'flex',
+        width: '100%',
+        height: '100vh',
+        flexDirection: 'column'
+      }}>
+        <PoiMapWithMarkers/>
+
+        <BottomNavigation
+          showLabels
+          value={"Recents"}
+          // onChange={(event, newValue) => {
+          //   setValue(newValue);
+          // }}
         >
-          Learn React
-        </a>
-      </header>
-    </div>
+          <BottomNavigationAction label="Recents" icon={<RestoreIcon/>}/>
+          <BottomNavigationAction label="Favorites" icon={<FavoriteIcon/>}/>
+
+          <Fab color="primary"
+               sx={{
+                 zIndex: 2000,
+                 marginTop: '-1.5em'
+               }}>
+            <AddIcon/>
+          </Fab>
+
+          <BottomNavigationAction label="Nearby" icon={<LocationOnIcon/>}/>
+          <BottomNavigationAction label="Nearby" icon={<LocationOnIcon/>}/>
+        </BottomNavigation>
+      </Box>
+    </ThemeProvider>
   );
 }
 
