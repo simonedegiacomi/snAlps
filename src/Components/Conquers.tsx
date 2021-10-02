@@ -1,4 +1,4 @@
-import {Box, Divider, Grid, List, ListItem, Typography} from "@mui/material";
+import {Box, Grid, List, ListItem, Typography} from "@mui/material";
 import waterEmblem from '../Icons/Emblems/water.png'
 import fireEmblem from '../Icons/Emblems/fire.png'
 import snowCatEmblem from '../Icons/Emblems/snow-cat.png'
@@ -48,7 +48,7 @@ const emblems = [
   }
 ]
 
-const sortedPhotos = photos.sort( () => .5 - Math.random() )
+const sortedPhotos = photos.sort(() => .5 - Math.random())
 
 export default function Conquers() {
   const pickedEmblems = useMemo(pickRandomEmblems, [])
@@ -118,7 +118,12 @@ export default function Conquers() {
                 <Typography sx={{fontWeight: 'bold'}}>{title}</Typography>
                 <Typography>Expires in {remainingDays} {remainingDays === 1 ? 'day' : 'days'}</Typography>
                 <Typography>{categoryName}</Typography>
-                <FavoriteBorderIcon/> {likes} <QuestionAnswerIcon/> {comments}
+                <Box sx={{display: 'flex', flexDirection: 'row', alignItems: 'center'}}>
+                  <Box sx={{marginRight: '.5em'}}><FavoriteBorderIcon/></Box>
+                  <span style={{marginRight: '1em'}}>{likes}</span>
+                  <Box sx={{marginRight: '.5em'}}><QuestionAnswerIcon/></Box>
+                  <span>{comments}</span>
+                </Box>
               </Box>
               <Box>
                 <img src={crown} style={{width: '1.5em', marginBottom: '-0.75em'}}/>
