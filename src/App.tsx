@@ -55,7 +55,8 @@ function App() {
           bottom: 0,
           left: 0,
           right: 0,
-          zIndex: 2000
+          zIndex: 2000,
+          boxShadow: '0px 0px 10px gray'
         }}
 
         onChange={(event, newValue) => {
